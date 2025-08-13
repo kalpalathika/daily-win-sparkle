@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				celebration: {
+					DEFAULT: 'hsl(var(--celebration))',
+					foreground: 'hsl(var(--celebration-foreground))'
+				},
+				sunshine: {
+					DEFAULT: 'hsl(var(--sunshine))',
+					foreground: 'hsl(var(--sunshine-foreground))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -67,6 +75,11 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-celebration': 'var(--gradient-celebration)',
+				'gradient-bg': 'var(--gradient-bg)'
 			},
 			keyframes: {
 				'accordion-down': {
