@@ -78,6 +78,36 @@ export const useWins = () => {
     }
   };
 
+  // Delete a win
+  const deleteWin = async (winId: string) => {
+    if (!user) return;
+
+    try {
+      const { error } = await supabase
+        .from('wins')
+        .delete()
+        .eq('id', winId)
+        .eq('user_id', user.id); // Extra security check
+
+      if (error) throw error;
+
+      // Update local state by removing the deleted win
+      setWins(prev => prev.filter(win => win.id !== winId));
+      
+      toast({
+        title: "Win deleted",
+        description: "Your win has been removed successfully."
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error deleting win",
+        description: error.message,
+        variant: "destructive"
+      });
+      throw error;
+    }
+  };
+
   // Calculate current streak
   const calculateStreak = () => {
     if (!wins.length) return 0;
@@ -125,6 +155,7 @@ export const useWins = () => {
     wins,
     loading,
     addWin,
+    deleteWin,
     calculateStreak,
     hasWinToday,
     refreshWins: loadWins

@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Trophy, Flame } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Calendar, Trophy, Flame, X } from "lucide-react";
 
 interface Win {
   id: string;
@@ -12,9 +13,10 @@ interface Win {
 interface WinHistoryProps {
   wins: Win[];
   streak: number;
+  onDeleteWin: (winId: string) => void;
 }
 
-const WinHistory: React.FC<WinHistoryProps> = ({ wins, streak }) => {
+const WinHistory: React.FC<WinHistoryProps> = ({ wins, streak, onDeleteWin }) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
@@ -58,7 +60,7 @@ const WinHistory: React.FC<WinHistoryProps> = ({ wins, streak }) => {
               {wins.map((win, index) => (
                 <div
                   key={win.id}
-                  className="flex items-start gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                  className="flex items-start gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group"
                 >
                   <div className="flex-shrink-0 mt-0.5">
                     <Badge variant="outline" className="border-celebration text-celebration-foreground bg-celebration/10">
@@ -74,6 +76,14 @@ const WinHistory: React.FC<WinHistoryProps> = ({ wins, streak }) => {
                       {formatDate(win.date)}
                     </div>
                   </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => onDeleteWin(win.id)}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity p-1 h-auto text-muted-foreground hover:text-destructive"
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
                 </div>
               ))}
             </div>

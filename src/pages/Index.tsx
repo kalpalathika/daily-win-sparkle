@@ -24,7 +24,7 @@ const motivationalMessages = [
 
 const Index = () => {
   const { user, signOut, loading: authLoading } = useAuth();
-  const { wins, addWin, calculateStreak, loading: winsLoading } = useWins();
+  const { wins, addWin, deleteWin, calculateStreak, loading: winsLoading } = useWins();
   const [showMessage, setShowMessage] = useState(false);
   const [currentMessage, setCurrentMessage] = useState('');
 
@@ -92,7 +92,7 @@ const Index = () => {
           visible={showMessage}
         />
         
-        <WinHistory wins={wins} streak={streak} />
+        <WinHistory wins={wins} streak={streak} onDeleteWin={deleteWin} />
       </div>
     </div>
   );

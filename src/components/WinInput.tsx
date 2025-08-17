@@ -49,6 +49,7 @@ const WinInput: React.FC<WinInputProps> = ({ onSubmit }) => {
               onChange={(e) => setWin(e.target.value)}
               placeholder="I finished my morning workout..."
               className="text-base h-12 border-2 border-border focus:border-primary transition-colors"
+              autoComplete="off"
             />
           </div>
           
