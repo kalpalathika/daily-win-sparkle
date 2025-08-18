@@ -10,6 +10,8 @@ A gamified personal achievement tracking application that helps users celebrate 
 
 *Add wins, celebrate with confetti, and track your daily achievements!*
 
+> **Note**: The demo requires email authorization for security. If you'd like to try the app, please send me an email at **kalpalathika1@gmail.com** and I'll add you to the access list.
+
 ## Features
 
 - 🔐 **Secure Authentication**: Google OAuth and email/password login
